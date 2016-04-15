@@ -1,0 +1,43 @@
+.reveal {
+  font-size: 35px;
+}
+
+.reveal p {
+  /* text-align: justify;
+  -moz-text-align-last: center;
+  text-align-last: center; */
+}
+
+.reveal li > code {
+  font-size: 25px;
+  color: #162955;
+}
+
+.reveal pre > code {
+  padding: 10px;
+  max-height: none;
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+  background: #3F3F3F;
+  color: #DCDCDC;
+}
+
+.reveal section img {
+  border: none;
+  box-shadow: none;
+}
+
+/*
+.reveal img {
+  //max-height: 85%;
+  //max-width: 85%;
+  border: none;
+  box-shadow: none;
+}
+*/
+
+.reveal ul {
+  display: block;
+  margin: 0 0 0 75px;
+}
