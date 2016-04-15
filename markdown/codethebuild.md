@@ -1,9 +1,9 @@
 ![todo](images/todo.png)
 * Basic and rapid introduction
 - Coding the CI / CD infrastructure
-* Coding the build part 1 (Jenkins)
-* Coding the build part 2 (build in containers)
-* Coding the build part 3 (docker in docker)
+* Coding the build - part 1 (Jenkins)
+* Coding the build - part 2 (build in containers)
+* Coding the build - part 3 (docker in docker)
 
 !SUB
 ## Docker
@@ -81,7 +81,7 @@ jenkins:
 
 !SUB
 ## Code the infrastructure
-OKAY we have now GIT and Jenkins running. But we still need to install some magick, the jenkins plugins.
+OKAY now we have GIT and Jenkins running. But we still need to install some magick: the jenkins plugins.
 
 ![jenkins-oops](images/jenkins-oops.png)
 
@@ -147,15 +147,15 @@ jenkins:
 ![jenkins](images/jenkins.png)
 - Jenkins workflow / pipeline plugin provides a way to code the build via a script file.
 - Steps
-  - Create a Jenkinsfile to code build.
-  - Create a pipeline job which use SCM (GIT) to get the Jenkinsfile.
+  - Create a `Jenkinsfile` to code the build.
+  - Create a pipeline job which uses SCM (GIT) to get the `Jenkinsfile`.
 
 
 !SUB
 ## Code the build - sample app
-- The sample app is a java based spring boot service witch use a mongo db (data store).
+- The sample app is a java based spring boot service witch uses a mongo db (data store).
 - The build is scripted in gradle.
-- The application is distributed as docker container.
+- The application is distributed as a docker container.
 
 ![service-overview](images/service.png)
 
@@ -187,8 +187,8 @@ node {
 !SUB
 ## Measuring Code Quality - Sonar
 - Next we add SonarQube to measure the code qaulity.
-  - Add SonarQube to our CI eco system, update docker-compose
-  - Add Sonar to the build, update Jenkinsfile
+  - Add SonarQube to our CI ecosystem and update docker-compose.
+  - Add Sonar to the build and update Jenkinsfile.
 
 !SUB
 ### Sonar - Update Compose
@@ -239,8 +239,8 @@ node {
 !SUB
 ## Managing artifacts - Artifactory
 - Next we add Artifactory OSS as repository to maintain artifacts.
-  - Add Artifactory OSS CI eco system, update docker-compose
-  - Gradle build is already aware of a repository.
+  - Add Artifactory OSS CI ecosystem and update docker-compose.
+  - Gradle build is already aware of the repository.
 
 
 
@@ -259,12 +259,12 @@ artifactory:
 ```
 
 !SLIDE
-COOL we can code the build as part of our sources. But what about the infrastructure we are using for the build. Can we create a stable and reproducable infrastructure for build as well?
+COOL now we can code the build as part of our sources. But what about the infrastructure we are using for the build? Can we create a stable and reproducable infrastructure for the build as well?
 
 !SLIDE
 ## Code the infrastructure part 2
 - Running a build in a container provides a reproducable and consistent environment.
-- GitLab CI fits better since the model of runners that supports docker.
+- GitLab CI fits better because of the model of runners that supports docker.
 ![docker-gitlab](images/docker-gitlab.png)
 
 !SUB
@@ -273,7 +273,7 @@ COOL we can code the build as part of our sources. But what about the infrastruc
 
 
 !SUB
-## Code the build in GitLab CI
+## Code the build - GitLab CI
 - GitLab CI is fully integrated in GitLab.
 - GitLab CI builds automatically once a `.gitlab-ci.yml` file is in the root of the repo.
 
@@ -290,7 +290,7 @@ assemble:
 
 !SUB
 ## Code the build in GitLab CI
-We have GitLab CI already running since we use GitLab as our GIT server. So we only need to create a runner.
+We have GitLab CI already running since we use GitLab as our GIT server. So, we only need to create a runner.
 
 <div class="fragment">
 Create the runner `docker.compose.yml`
@@ -364,7 +364,7 @@ sonar:
 
 !SLIDE
 ## Code the build part 3
-- How can we run e2e test for our app?
+- How can we run end-to-end test for our service?
 ![service-overview](images/service.png)
 
 
@@ -374,12 +374,11 @@ sonar:
   - The service has a `Dockerfile` which defines the service container.
   - For mongo we use the official docker image.
 
-
 <div class="fragment">
 `docker-compose.yml`
 <pre><code>
 mongo:
-  image: mongo:3.0.6
+  image: mongo:3.2
 service:
   build: ./build/docker
   ports:
@@ -426,9 +425,8 @@ performance_test:
 
 All sources are available on GitHub
 - Slides<br>
-  - `git clone https://github.com/codethebuild/slides.git`
   - `open http://codethebuild.github.io/slides/`
-  - `docker run -p 80:80 npalm/codethebuild:nextbuild`
+  - `git clone https://github.com/codethebuild/slides.git`
 - CI / CD enviroment
   - `git clone https://github.com/codethebuild/cicd.git`
 - Sample sources Java Spring Boot service
