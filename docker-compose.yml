@@ -1,7 +1,7 @@
 slides:
   build: test/nginx
   environment:
-    VIRTUAL_HOST: 'nextbuild2.docker'
+    VIRTUAL_HOST: 'codethebuild.docker'
     VIRTUAL_PORT: 80
   volumes:
     - .:/usr/share/nginx/html
