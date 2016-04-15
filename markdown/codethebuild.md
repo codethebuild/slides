@@ -145,19 +145,32 @@ jenkins:
 !SLIDE
 ## Code the build
 ![jenkins](images/jenkins.png)
-- Jenkins workflow / pipeline plugin provides a way to code the build via a script file.
+
+
+!SUB
+## Code the build - Sample app
+![service-overview](images/service.png)
+
+- The sample application is a Java based Spring Boot service witch uses a mongo db (data store).
+
+- The build is scripted in gradle. We can build by running:
+ ```
+ gradlew <tasks>
+ ```
+- The application is distributed as a docker container.
+
+
+!SUB
+## Code the build - Jenkins Pipeline
+- Jenkins pipeline plugin provides a way to code the build via a script file.
+- Jenkins pipeline will be part of the new coming Jenkins 2.0
 - Steps
   - Create a `Jenkinsfile` to code the build.
   - Create a pipeline job which uses SCM (GIT) to get the `Jenkinsfile`.
 
 
-!SUB
-## Code the build - sample app
-- The sample app is a java based spring boot service witch uses a mongo db (data store).
-- The build is scripted in gradle.
-- The application is distributed as a docker container.
 
-![service-overview](images/service.png)
+
 
 !SUB
 ## Code the build - Jenkins
@@ -183,6 +196,31 @@ node {
 ## Jenkins build
 ![jenkins-overview](images/jenkins-overview.png)
 
+!SUB
+## Artifactory and Sonar
+
+
+!SUB
+## Managing artifacts - Artifactory
+- Next we add Artifactory OSS as repository to maintain artifacts.
+  - Add Artifactory OSS CI ecosystem and update docker-compose.
+  - Gradle build is already aware of the repository.
+
+
+
+!SUB
+### Artifactory - Update Compose
+```
+artifactory:
+  image: 'jfrog-docker-reg2.bintray.io/jfrog/artifactory-oss'
+  ports:
+    - '87:8081'
+  volumes:
+    - '/opt/artifactory/data:/var/opt/jfrog/artifactory/data'
+    - '/opt/artifactory/logs:/var/opt/jfrog/artifactory/logs'
+    - '/opt/artifactory/backup:/var/opt/jfrog/artifactory/backup'
+
+```
 
 !SUB
 ## Measuring Code Quality - Sonar
@@ -236,27 +274,6 @@ node {
 }
 ```
 
-!SUB
-## Managing artifacts - Artifactory
-- Next we add Artifactory OSS as repository to maintain artifacts.
-  - Add Artifactory OSS CI ecosystem and update docker-compose.
-  - Gradle build is already aware of the repository.
-
-
-
-!SUB
-### Artifactory - Update Compose
-```
-artifactory:
-  image: 'jfrog-docker-reg2.bintray.io/jfrog/artifactory-oss'
-  ports:
-    - '87:8081'
-  volumes:
-    - '/opt/artifactory/data:/var/opt/jfrog/artifactory/data'
-    - '/opt/artifactory/logs:/var/opt/jfrog/artifactory/logs'
-    - '/opt/artifactory/backup:/var/opt/jfrog/artifactory/backup'
-
-```
 
 !SLIDE
 COOL now we can code the build as part of our sources. But what about the infrastructure we are using for the build? Can we create a stable and reproducable infrastructure for the build as well?
