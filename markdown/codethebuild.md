@@ -425,9 +425,8 @@ performance_test:
 
 All sources are available on GitHub
 - Slides<br>
-  - `git clone https://github.com/codethebuild/slides.git`
   - `open http://codethebuild.github.io/slides/`
-  - `docker run -p 80:80 npalm/codethebuild:nextbuild`
+  - `git clone https://github.com/codethebuild/slides.git`
 - CI / CD enviroment
   - `git clone https://github.com/codethebuild/cicd.git`
 - Sample sources Java Spring Boot service
