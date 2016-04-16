@@ -6,3 +6,9 @@ node_modules/
 .sass-cache
 css/reveal.min.css
 js/reveal.min.js
+**/.data
+**/.idea/**
+**/.gradle/**
+**/atlassian-ide-plugin.xml
+**/*.iml
+**/build/**
