@@ -444,6 +444,7 @@ All sources are available on GitHub
 - Slides<br>
   - `open http://codethebuild.github.io/slides/`
   - `git clone https://github.com/codethebuild/slides.git`
+  - `docker run -d -p 80:80 npalm/codethebuild:nextbuild`
 - CI / CD enviroment
   - `git clone https://github.com/codethebuild/cicd.git`
 - Sample sources Java Spring Boot service
